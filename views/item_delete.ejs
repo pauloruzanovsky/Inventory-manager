@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Delete Item</title>
+</head>
+<body>
+    <%- include('sidebar'); -%>
+    <main>
+    <h1><%=item.name%>s </h1>
+    <p>Supplier: <a href="/inventory/supplier/<%=item.supplier._id%>"><%=item.supplier.name%></a></p>
+        <p>Do you really want to delete this item?</p>
+
+        <form method="POST">
+            <div class="form-group">
+                <input type="hidden" id="itemid" class="form-control" name="itemid" required="true" value=<%=item._id%>>
+            </div>
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+    </main> 
+</body>
+</html>

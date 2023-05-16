@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('sidebar'); -%>
+    <main>
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %>, a Express app for inventory management of a supplement store.</p>
+      <p>This is the current structure of the inventory:</p>
+      <ul>
+        <li><b>Number of Products</b>: <%=item_count%></li>
+        <li><b>Product Categories</b>: <%=category_count%></li>
+        <li><b>Product Suppliers</b>: <%=supplier_count%></li>
+      </ul>
+    </main>
+  </body>
+</html>

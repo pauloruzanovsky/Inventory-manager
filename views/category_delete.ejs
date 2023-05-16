@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Delete Category</title>
+</head>
+<body>
+    <%- include('sidebar'); -%>
+    <main>
+    <h1><%=category.name%>s </h1>
+    <p><%=category.description%></p>
+    <% if(category_items.length > 0) { %>
+    <p>Delete the following items before attempting to delete this category.</p>
+    <% for (var i = 0; i < category_items.length; i++) { %>
+    <p><a href="/inventory/item/<%=category_items[i].id%>"><%=category_items[i].name%></a> from <a href="/inventory/supplier/<%=category_items[i].supplier._id%>"><%=category_items[i].supplier.name%></a></p>
+    <% } %>
+    <% } else { %>
+        <p>Do you really want to delete this category?</p>
+        <form method="POST">
+            <div class="form-group">
+                <input type="hidden" id="categoryid" class="form-control" name="categoryid" required="true" value=<%=category._id%>>
+            </div>
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+    <% } %>
+    </main> 
+</body>
+</html>

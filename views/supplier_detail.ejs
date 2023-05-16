@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Suppliers</title>
+</head>
+<body>
+    <%- include('sidebar'); -%>
+    <main>
+    <h1><%=supplier.name%> Products</h1>
+    <p><%=supplier.description%></p>
+
+    <ul>
+        <%item_list.forEach(function(item) {%>
+            <li><a href="/inventory/item/<%=item.id%>"> <%=item.name%></a></li>
+            <% }); %>
+    </ul>
+    <p><a href="/inventory/supplier/<%=supplier.id%>/delete">Delete this supplier</a></p>
+    <p><a href="/inventory/supplier/<%=supplier.id%>/update">Update this supplier</a></p>
+
+    </main>
+</body>
+</html>

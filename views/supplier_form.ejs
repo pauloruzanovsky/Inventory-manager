@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <title>Create Supplier</title>
+</head>
+<body>
+    <%- include('sidebar'); -%>
+    <main>
+        <h1><%=title%></h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="name">Supplier</label>
+                <input type="text" name="name" id="name" class="form-control" value="<%=supplier ? supplier.name : ""%>"> 
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" class="form-control" value="<%=supplier ? supplier.description : ""%>">               
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% if (errors && errors.length) { %>
+            <div class="alert alert-danger">
+                <% errors.forEach(function(error) { %>
+                    <p><%= error.msg %></p>
+                <% }) %>
+            </div>
+        <% } %>
+    </main>
+</body>
+</html>
