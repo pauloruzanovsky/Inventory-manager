@@ -9,14 +9,15 @@ const inventoryRouter = require('./routes/inventory');
 const compression = require('compression');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
-const limiter = RateLimit({ windowMs: 15 * 60 * 1000, max: 20 });
+const limiter = RateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
 
 const app = express();
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://pauloruzanovsky:qweqwe123@inventorymanagercluster.zmes3gp.mongodb.net/?retryWrites=true&w=majority";
+const dev_db_url = "mongodb+srv://pauloruzanovsky:qweqwe123@inventorymanagercluster.zmes3gp.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
 async function main() {
