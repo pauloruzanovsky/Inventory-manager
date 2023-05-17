@@ -17,7 +17,7 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const dev_db_url = "mongodb+srv://pauloruzanovsky:qweqwe123@inventorymanagercluster.zmes3gp.mongodb.net/?retryWrites=true&w=majority";
-const mongoDB = process.env.MONGODB_URI || dev_db_url
+const mongoDB = "mongodb://mongo:tH5NrkQrxYUXrdiNql9V@containers-us-west-138.railway.app:5518"
 
 
 main().catch((err) => console.log(err));
