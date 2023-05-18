@@ -3,13 +3,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 const indexRouter = require('./routes/index');
 const inventoryRouter = require('./routes/inventory');
 const compression = require('compression');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const limiter = RateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
+require("dotenv").config();
 
 const app = express();
 
@@ -17,8 +17,9 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const dev_db_url = "mongodb+srv://pauloruzanovsky:qweqwe123@inventorymanagercluster.zmes3gp.mongodb.net/?retryWrites=true&w=majority";
-const mongoDB = "mongodb://mongo:tH5NrkQrxYUXrdiNql9V@containers-us-west-138.railway.app:5518"
+const mongoDB = process.env.MONGODB_URI || dev_db_url
 
+console.log(process.env.MONGODB_URI)
 
 main().catch((err) => console.log(err));
 async function main() {
